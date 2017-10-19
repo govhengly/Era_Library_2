@@ -17,7 +17,7 @@ class UserController extends Controller
         $user->firstname=$request->input('firstname');
         $user->lastname=$request->input('lastname');
         $user->tel=$request->input('tel');
-        $user->gmail=$request->input('gmail');
+        $user->email=$request->input('email');
         $user->password=$request->input('password');
         $user->save();
 
@@ -37,7 +37,7 @@ class UserController extends Controller
 //        dd(csrf_token());
 //        dd(request()->all());
         $data=Users::where([
-            ['gmail', request('gmail') ],
+            ['email', request('email') ],
             ['password',request('password')]
         ])->first();
         if (count($data)>0){
