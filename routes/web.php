@@ -25,24 +25,28 @@ Route::post('admin_login',"AdminController@admin_login");
 Route::post('upload',"AdminController@admin_upload");
 
 //for book
-Route::get('list',"LibraryController@list_inf");
-Route::get('book_get',"LibraryController@book_get");
-Route::post('book_edit/{id}',"LibraryController@book_edit")->name('book_edit');
-Route::get('book_form',"LibraryController@book_form");
-Route::get('book_register',"LibraryController@book_register");
-Route::post('book_update/{id}',"LibraryController@book_update")->name('book_update');
-Route::post('book_id/{id}',"LibraryController@book_id");
+Route::get('list',"BookController@list_inf");
+Route::get('book_get',"BookController@book_get");
+Route::post('book_edit/{id}',"BookController@book_edit")->name('book_edit');
+Route::get('book_form',"BookController@book_form");
+Route::get('book_register',"BookController@book_register");
+Route::post('book_update/{id}',"BookController@book_update")->name('book_update');
+Route::post('book_id/{id}',"BookController@book_id");
+
+
+Route::get('borrow',"BorrowController@get_borrow");
+Route::get('list_borrow',"BorrowController@list_borrow");
 
 
 
 //for user
-Route::get('user_form',"UserController@user_form");
-Route::get('user_register',"UserController@user_register");
-Route::get('user_get',"UserController@user_get");
+Route::get('user_form',"ERAUserController@user_form");
+Route::get('user_register',"ERAUserController@user_register");
+Route::get('user_get',"ERAUserController@user_get");
 //Route::get('user_login',"UserController@user_login");
-Route::post('user_login',"UserController@user_login");
-Route::get('user_check',"UserController@user_check");
-Route::get('returncost',"UserController@returncost");
+Route::post('user_login',"ERAUserController@user_login");
+Route::get('user_check',"ERAUserController@user_check");
+Route::get('returncost',"ERAUserController@returncost");
 
 //Route::get('/test', function(){
 //    return 200;

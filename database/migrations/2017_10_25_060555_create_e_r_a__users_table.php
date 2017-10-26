@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TestUpload extends Migration
+class CreateERAUsersTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class TestUpload extends Migration
      */
     public function up()
     {
-        Schema::create('upload', function (Blueprint $table) {
-            $table->increments('upload_id');
-            $table->string('photo');
+        Schema::create('e_r_a__users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->string('tel');
+            $table->string('email');
+            $table->string('password');
             $table->timestamps();
         });
     }
@@ -27,6 +31,6 @@ class TestUpload extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('e_r_a__users');
     }
 }

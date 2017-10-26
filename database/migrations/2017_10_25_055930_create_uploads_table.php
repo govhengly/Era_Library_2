@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAdmins extends Migration
+class CreateUploadsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateAdmins extends Migration
      */
     public function up()
     {
-        Schema::create('admins', function (Blueprint $table) {
-            $table->increments('admin_id');
-            $table->string('photo')->default('https://cdn.schd.ws/common/img/avatar-empty.png')->nullable();
-            $table->string('username');
-            $table->string('password');
+        Schema::create('uploads', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('photo');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateAdmins extends Migration
      */
     public function down()
     {
-        //
+        Schema::dropIfExists('uploads');
     }
 }

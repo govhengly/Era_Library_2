@@ -78,16 +78,14 @@ class AdminController extends Controller
         $user_password = Hash::make($user_password);
         $admin = new Admin();
         $admin->username = $request->input('username');
-//        $admin->photo = "/image/" . $image_name;
         $admin->password = $user_password;
         $admin->save();
 
-//        dd($admin);
         $JSON = array();
         $JSON['status'] = "1";
         $JSON['data'] = Admin::query()->where('username', $request->input('username'))->first();
         return json_encode($JSON);
-}
+    }
 
     function admin_get()
     {
@@ -134,10 +132,10 @@ class AdminController extends Controller
 //        return $user;
 //    }
 
-    public function admin_upload(Request $request){
+    public function admin_upload(Request $request)
+    {
         $image = base64_decode($request->input('image'));
-//        $image_name= "file_namess.png";
-        $image_name=$request->input('user').'.png';
+        $image_name = $request->input('user') . '.png';
         $path = public_path() . "/image/" . $image_name;
 
         file_put_contents($path, $image);
@@ -146,20 +144,21 @@ class AdminController extends Controller
         $upload->photo = "/image/" . $image_name;
         $upload->save();
         return 'true';
-//        if($request->hasFile('photo')) {
-////            dd($request);
-//            $photo = $request->file('photo');
-//            $filename = time() . '.' . $photo->getClientOriginalName();
-//            Image::make($photo)->resize(300, 300)->save(public_path('/image/' . $filename));
-//            return 'true';
+        /*        if($request->hasFile('photo')) {
+        //            dd($request);
+                    $photo = $request->file('photo');
+                    $filename = time() . '.' . $photo->getClientOriginalName();
+                    Image::make($photo)->resize(300, 300)->save(public_path('/image/' . $filename));
+                    return 'true';
 
-//       if ($request->hasFile('photo')){ $image = base64_decode('photo');
-//        $fp = fopen('public/image','wb+');
-//        fwrite($fp,$image);
-//        fclose($fp);
+               if ($request->hasFile('photo')){ $image = base64_decode('photo');
+                $fp = fopen('public/image','wb+');
+                fwrite($fp,$image);
+                fclose($fp);
 
-//
+
+            }
+           else
+               return false;*/
     }
-//    else
-//        return false;
 }

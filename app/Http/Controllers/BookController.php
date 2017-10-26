@@ -2,14 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
+use App\Book;
+use App\ERA_User;
 use Illuminate\Http\Request;
-use App\Library;
 
-class LibraryController extends Controller
+class BookController extends Controller
 {
-   /* function book_form(){
-         return view("book_register");
+    function book_form(){
+        return view("book_register");
     }
     function book_register(Request $request){
         if($request->hasFile('photo')){
@@ -18,7 +18,7 @@ class LibraryController extends Controller
             $filename=time().'.'.$photo->getClientOriginalExtension();
             Image::make($photo)->resize(300,300)->save(public_path('/image/'.$filename));
         }
-        $book=new Library();
+        $book=new Book();
         $book->title=$request->title;
         $book->category=$request->category;
         $book->type=$request->type;
@@ -26,6 +26,8 @@ class LibraryController extends Controller
         $book->barcode=$request->barcode;
         $book->manager=$request->manager;
         $book->count=$request->count;
+        $book->year=$request->year;
+        $book->photo=$request->photo;
         $book->save();
 
 //       return redirect()->Action('AdminController@admin_form');
@@ -34,13 +36,13 @@ class LibraryController extends Controller
         return json_encode($JSON);
     }
     function book_get(){
-        $book=Library::all();
+        $book=Book::all();
         $bookA = array();
         $bookA['data'] = $book;
         return json_encode($bookA);
     }
     function book_id($id){
-        $book=Library::find($id);
+        $book=Book::find($id);
         return $book;
     }
 //    function book_list_an(){
@@ -49,34 +51,31 @@ class LibraryController extends Controller
 
     function book_edit(Request $request, $id){
 
-    $book = Library::find($id); // find book that is id
-    return view("book_edit", compact('book','id'));
+        $book = Book::find($id); // find book that is id
+        return view("book_edit", compact('book','id'));
     }
     function book_update(Request $request,$id){
-        $book= Library::find($id);
+        $book= Book::find($id);
         $book->title = $request->title;
         $book->category=$request->category;
         $book->type=$request->type;
         $book->author=$request->author;
 //        $book->updated_at=new\DateTime();
         $book->update();
-        $books=Library::all();
+        $books=Book::all();
 
         return view ('book_list', compact('books'));
 
     }
     function borrow_book($id){
-        $book=Library::find($id);
-        $user=User::all();
+        $book=Book::find($id);
+        $user=ERA_User::all();
 
     }
 
     function list_inf(){
-        $books=Library::all();
+        $books=Book::all();
         return view('book_list',compact('books'));
     }
 
-    function borrow(Request $request){
-
-    }*/
 }
