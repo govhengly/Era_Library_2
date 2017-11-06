@@ -16,7 +16,7 @@ class BookController extends Controller
 //            dd($request);
             $photo=$request->file('photo');
             $filename=time().'.'.$photo->getClientOriginalExtension();
-            Image::make($photo)->resize(300,300)->save(public_path('/image/'.$filename));
+//            Image::make($photo)->resize(300,300)->save(public_path('/image/'.$filename));
         }
         $book=new Book();
         $book->title=$request->title;
@@ -45,9 +45,10 @@ class BookController extends Controller
         $book=Book::find($id);
         return $book;
     }
-//    function book_list_an(){
-//        return $this->belongsTo('App\Library');
-//    }
+
+/*    function book_list_an(){
+        return $this->belongsTo('App\Library');
+    }*/
 
     function book_edit(Request $request, $id){
 

@@ -33,9 +33,11 @@ Route::get('book_register',"BookController@book_register");
 Route::post('book_update/{id}',"BookController@book_update")->name('book_update');
 Route::post('book_id/{id}',"BookController@book_id");
 
-
-Route::get('borrow',"BorrowController@get_borrow");
+Route::get('borrow',"BorrowController@borrow");
+Route::get('get_borrow',"BorrowController@get_borrow");
+Route::get('return_back',"BorrowController@return_back");
 Route::get('list_borrow',"BorrowController@list_borrow");
+Route::get('accept_borrow',"BorrowController@accept_borrow");
 
 
 
